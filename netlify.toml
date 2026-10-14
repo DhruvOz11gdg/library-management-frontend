@@ -1,0 +1,10 @@
+[[redirects]]
+  from = "/api/*"
+  to = "https://library-management-backend-production-2ae2.up.railway.app/v1/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

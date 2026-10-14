@@ -1,0 +1,142 @@
+@import "tailwindcss";
+@theme {
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --animate-spin-slow: spinSlow 22s linear infinite;
+  @keyframes spinSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  --color-cream-50: #fffaf3;
+  --color-cream-100: #fff4e6;
+  --color-cream-200: #fde9d0;
+  --color-cream-300: #f9d8ad;
+  --color-maroon-50: #fdf2f4;
+  --color-maroon-100: #f9dfe4;
+  --color-maroon-200: #f0b9c3;
+  --color-maroon-500: #8e1f38;
+  --color-maroon-600: #75172e;
+  --color-maroon-700: #5f1226;
+  --color-maroon-800: #4a0e1c;
+  --color-maroon-900: #360914;
+  --color-maroon-950: #22050d;
+  --color-gold-50: #fdf8ec;
+  --color-gold-100: #faefcF;
+  --color-gold-200: #f5e0a3;
+  --color-gold-300: #edcb6f;
+  --color-gold-400: #e8c476;
+  --color-gold-500: #d4a437;
+  --color-gold-600: #b88926;
+  --color-gold-700: #8f6a1f;
+  --color-blush-100: #ffe4e8;
+  --color-blush-200: #ffc9d2;
+  --color-blush-500: #e35d7c;
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-marquee-slow: marquee 55s linear infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-delay: float 8s ease-in-out 1.2s infinite;
+  --animate-shimmer: shimmer 2.8s linear infinite;
+  --animate-glow-pulse: glowPulse 4.5s ease-in-out infinite;
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-14px); }
+  }
+  @keyframes shimmer {
+    from { background-position: 200% 0; }
+    to { background-position: -200% 0; }
+  }
+  @keyframes glowPulse {
+    0%, 100% { opacity: 0.55; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.08); }
+  }
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+body {
+  font-family: var(--font-sans);
+  background: var(--color-cream-50);
+  color: #2a1418;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+::selection {
+  background: #4a0e1c;
+  color: #f5e0a3;
+}
+/* custom scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #fff4e6; }
+::-webkit-scrollbar-thumb { background: linear-gradient(#8e1f38, #d4a437); border-radius: 999px; }
+.text-gold-gradient {
+  background: linear-gradient(100deg, #8f6a1f 0%, #d4a437 22%, #fff3c4 50%, #d4a437 78%, #8f6a1f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.gold-shimmer {
+  background: linear-gradient(110deg, #d4a437 20%, #fff8dc 40%, #d4a437 60%);
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+.glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+}
+.glass-dark {
+  background: rgba(54, 9, 20, 0.62);
+  backdrop-filter: blur(18px) saturate(1.3);
+  -webkit-backdrop-filter: blur(18px) saturate(1.3);
+}
+.glass-gold {
+  background: linear-gradient(135deg, rgba(255,250,240,0.9), rgba(250,239,207,0.75));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.card-lift {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card-lift:hover {
+  transform: translateY(-8px);
+}
+.img-zoom img {
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.img-zoom:hover img {
+  transform: scale(1.07);
+}
+.ring-gold {
+  box-shadow: 0 0 0 1px rgba(212, 164, 55, 0.35), 0 20px 60px -20px rgba(74, 14, 28, 0.35);
+}
+.paisley-bg {
+  background-image: radial-gradient(circle at 1px 1px, rgba(212,164,55,0.18) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.mask-fade-x {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+:focus-visible {
+  outline: 3px solid #d4a437;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
